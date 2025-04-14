@@ -4,7 +4,7 @@
 %% PRELIMINARY TASK - ARDUINO AND GIT INSTALLATION [10 MARKS]
 
 % Initialize Arduino
-a = arduino('COM6', 'Uno'); % Replace 'COM6' with your port
+%a = arduino('COM6', 'Uno'); % Replace 'COM6' with your port
 
 % Blink LED on pin D3
 for i = 1:10
@@ -15,15 +15,14 @@ for i = 1:10
 end
 
 %% TASK 1 - READ TEMPERATURE DATA, PLOT, AND WRITE TO A LOG FILE [20 MARKS]
+
 % 数据采集
-V0C = 500;
-TC=10;
 duration = 600;
 time = 0:1:duration;
 temperature = zeros(size(time));
 for i = 1:length(time)
-    voltage = readVoltage(a, 'A1'); % 假设连接到A0引脚，需根据实际修改
-    temperature(i) = (voltage*1000 - V0C) / TC; % 根据传感器文档确定V0°C和TC
+    voltage = readVoltage(a, 'A0'); % 假设连接到A0引脚，需根据实际修改
+    temperature(i) = (voltage - V0°C) / TC; % 根据传感器文档确定V0°C和TC
 end
 % 计算统计量
 minTemp = min(temperature);
