@@ -5,36 +5,36 @@ Minute0
 Temperature 21.85 C
 
 Minute1
-Temperature 22.34 C
+Temperature 21.85 C
 
 Minute2
-Temperature 22.34 C
+Temperature 21.85 C
 
 Minute3
-Temperature 22.34 C
+Temperature 21.36 C
 
 Minute4
-Temperature 22.34 C
+Temperature 21.36 C
 
 Minute5
-Temperature 21.85 C
+Temperature 21.36 C
 
 Minute6
-Temperature 22.34 C
+Temperature 21.36 C
 
 Minute7
-Temperature 22.34 C
-
-Minute8
-Temperature 22.34 C
-
-Minute9
 Temperature 21.85 C
 
-Minute10
-Temperature 22.34 C
+Minute8
+Temperature 21.36 C
 
-Max temp22.83 C
-Min temp21.85 C
-Average temp22.23 C
+Minute9
+Temperature 21.36 C
+
+Minute10
+Temperature 21.36 C
+
+Max temp22.34 C
+Min temp21.36 C
+Average temp21.69 C
 Data logging terminated
