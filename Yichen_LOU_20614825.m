@@ -75,4 +75,27 @@ doc temp_prediction
 
 %% TASK 4 - REFLECTIVE STATEMENT [5 MARKS]
 
-% Insert answers here
+%{
+  Challenges  
+  1. Hardware Integration: Initial difficulties in connecting multiple sensors to Arduino, such as pin conflicts and unstable grounding, required repeated circuit debugging.
+  2. Timing Management: Balancing LED blinking, temperature sampling, and live plotting in real-time led to timing conflicts. Solved by optimizing loop intervals using `pause()`.
+  3. Sensor Noise: Temperature readings showed random spikes. Implemented a simple moving average filter to smooth data, though slight delays were introduced.
+  4. Prediction Accuracy: The linear prediction model assumes a constant rate of change, which may not hold true in real-world dynamic environments.
+
+  Strengths  
+  1. Modular Design: Separated temperature reading, LED control, and prediction logic into reusable functions for clarity.
+  2. Real-Time Feedback: Console outputs and LED visualizations provided immediate system status checks.
+  3. Error Handling: Added basic `try-catch` blocks to prevent crashes during sensor disconnections.
+
+  Limitations  
+  1. Hardware Constraints: Limited sensor accuracy (±1°C) and LED response delays affected performance.
+  2. Simplified Algorithms: Noise filtering used basic averaging, which struggles with rapid temperature changes.
+  3. User Interface: Reliance on command-line outputs made the system less intuitive for non-technical users.
+
+  Future Improvements (Undergraduate-Level) 
+  1. Better Noise Filtering: Implement a weighted moving average to prioritize recent data while smoothing noise.
+  2. Basic GUI: Use MATLAB App Designer to create buttons/sliders for manual threshold adjustments.
+  3. Multi-Sensor Validation: Add a second thermistor to cross-check temperature readings.
+  4. Energy Efficiency: Replace polling with interrupt-driven LED control to reduce Arduino power consumption.
+  5. Alert System: Add a buzzer to complement LED warnings for accessibility.
+%}

@@ -12,7 +12,7 @@ function temp_prediction(a)
 %
 %   Requires:
 %     - Thermistor parameters (V0C = 500 mV at 0°C, TC = 10 mV/°C).
-%     - LEDs on digital pins 9 (green), 10 (red), 11 (yellow).
+%     - LEDs on digital pins D10 (green), D6 (red), D3 (yellow).
 
     % Configuration
     V0C = 500;          % Thermistor voltage at 0°C (mV)
