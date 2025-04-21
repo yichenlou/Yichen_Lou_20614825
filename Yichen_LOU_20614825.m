@@ -15,15 +15,25 @@ for i = 1:10
 end
 
 %% TASK 1 - READ TEMPERATURE DATA, PLOT, AND WRITE TO A LOG FILE [20 MARKS]
+
+% Initialize Arduino
+clear,clc
+a = arduino('COM6', 'Uno');
+
 % Data collection
 V0C = 500;
 TC=10;
 duration = 600;
-time = 0:1:duration;
+time = 0:1:(duration-1);
 temperature = zeros(size(time));
 for i = 1:length(time)
+    tic
     voltage = readVoltage(a, 'A1'); % Connect to Interface A1
     temperature(i) = (voltage*1000 - V0C) / TC; % Determine V0°C and TC based on the sensor documentation
+    elapsedTime=toc;
+    if elapsedTime < 1
+        pause(1-elapsedTime);
+    end
 end
 % Calculate the statistics
 minTemp = min(temperature);
@@ -34,6 +44,8 @@ figure;
 plot(time, temperature);
 xlabel('Time (s)');
 ylabel('Temperature (°C)');
+xlim([0, 600]);
+ylim([10 30]);
 % output
 dataLogStart = datestr(now, 'dd/mm/yyyy');
 location = 'Nottingham';
@@ -41,7 +53,7 @@ fprintf('Data logging initiated - %s\n', dataLogStart);
 fprintf('Location - %s\n\n', location);
 for i = 0:10
     fprintf('Minute%d\n', i);
-    fprintf('Temperature %.2f C\n\n', temperature(i + 1));
+    fprintf('Temperature %.2f C\n\n', temperature(i*10 + 1));
 end
 fprintf('Max temp%.2f C\n', maxTemp);
 fprintf('Min temp%.2f C\n', minTemp);
@@ -53,7 +65,7 @@ fprintf(fileID, 'Data logging initiated - %s\n', dataLogStart);
 fprintf(fileID, 'Location - %s\n\n', location);
 for i = 0:10
     fprintf(fileID, 'Minute%d\n', i);
-    fprintf(fileID, 'Temperature %.2f C\n\n', temperature(i + 1));
+    fprintf(fileID, 'Temperature %.2f C\n\n', temperature(i*10 + 1));
 end
 fprintf(fileID, 'Max temp%.2f C\n', maxTemp);
 fprintf(fileID, 'Min temp%.2f C\n', minTemp);
@@ -62,11 +74,19 @@ fprintf(fileID, 'Data logging terminated\n');
 fclose(fileID);
 %% TASK 2 - LED TEMPERATURE MONITORING DEVICE IMPLEMENTATION [25 MARKS]
 
+% Initialize Arduino
+clear,clc
+a = arduino('COM6', 'Uno');
+
 temp_monitor(a)
 
 doc temp_monitor
 
 %% TASK 3 - ALGORITHMS – TEMPERATURE PREDICTION [25 MARKS]
+
+% Initialize Arduino
+clear,clc
+a = arduino('COM6', 'Uno');
 
 temp_prediction(a)
 
